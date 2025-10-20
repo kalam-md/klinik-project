@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>KLINIK ABC</title>
+  <title>Klinik Dr. Rusdi Sulan</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -37,7 +37,7 @@
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <h1 class="sitename">Klinik ABC</h1>
+          <h1 class="sitename">Klinik Dr. Rusdi Sulan</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -81,10 +81,10 @@
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <h3>Tentang Kami</h3>
             <p>
-              Klinik ABC menawarkan pelayanan medis berupa konsultasi dengan  dokter spesialis, dokter umum, psikolog, bidan, ahli gizi, pemeriksaan laboratorium, layanan vaksinasi, khitanan, dan homevisit ke rumah. Kami juga rutin membuat konten edukasi di bidang kesehatan yang dapat diakses di kanal media sosial kami. Dengan dukungan tim medis yang terampil dan berpengalaman, kami siap memberikan perawatan kesehatan yang berkualitas untuk Anda.
+              Klinik Dr. Rusdi Sulan menawarkan pelayanan medis berupa konsultasi dengan  dokter spesialis, dokter umum, psikolog, bidan, ahli gizi, pemeriksaan laboratorium, layanan vaksinasi, khitanan, dan homevisit ke rumah. Kami juga rutin membuat konten edukasi di bidang kesehatan yang dapat diakses di kanal media sosial kami. Dengan dukungan tim medis yang terampil dan berpengalaman, kami siap memberikan perawatan kesehatan yang berkualitas untuk Anda.
             </p>
             <p>
-              Kami berkomitmen untuk selalu berusaha memberikan pelayanan yang ramah dan profesional, sehingga Anda merasa nyaman dan tenang selama menjalani perawatan di Klinik ABC. Selain itu, kami juga terus berinovasi dan mengembangkan layanan kesehatan kami agar selalu dapat memenuhi kebutuhan kesehatan Anda. Harapan kami klinik ini dapat menjadi mitra yang dapat diandalkan dan menjadi solusi keluarga anda menuju sehat.
+              Kami berkomitmen untuk selalu berusaha memberikan pelayanan yang ramah dan profesional, sehingga Anda merasa nyaman dan tenang selama menjalani perawatan di Klinik Dr. Rusdi Sulan. Selain itu, kami juga terus berinovasi dan mengembangkan layanan kesehatan kami agar selalu dapat memenuhi kebutuhan kesehatan Anda. Harapan kami klinik ini dapat menjadi mitra yang dapat diandalkan dan menjadi solusi keluarga anda menuju sehat.
             </p>
           </div>
 
@@ -100,7 +100,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Pelayanan</h2>
-        <p>Klinik ABC menyediakan berbagai pelayanan yang membuat Anda merasa nyaman dan tenang</p>
+        <p>Klinik Dr. Rusdi Sulan menyediakan berbagai pelayanan yang membuat Anda merasa nyaman dan tenang</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -229,7 +229,7 @@
       <div class="row gy-4 justify-content-between">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">KLINIK ABC</span>
+            <span class="sitename">Klinik Dr. Rusdi Sulan</span>
           </a>
           <div class="footer-contact pt-3">
             <p>Jl. Ottoiskandardinata, Kec. Kebayoran Baru, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta</p>
@@ -262,7 +262,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">KLINIK ABC</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Klinik Dr. Rusdi Sulan</strong> <span>All Rights Reserved</span></p>
     </div>
 
   </footer>

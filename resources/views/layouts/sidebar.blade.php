@@ -113,11 +113,10 @@
 
     <!-- Logout -->
     <li class="menu-item">
-      <form class="menu-link" action="{{ route('logout') }}" method="post" style="cursor:pointer;">
-        @csrf
+      <a href="{{ route('logout') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-power-off"></i>
-        <button type="submit" class="text-truncate" data-i18n="Basic" style="all: unset;" >Logout</button>
-      </form>
+        <div class="text-truncate">Logout</div>
+      </a>
     </li>
   </ul>
 </aside>

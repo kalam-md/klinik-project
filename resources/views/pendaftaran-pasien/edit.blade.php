@@ -15,46 +15,72 @@
             <div class="row g-6 mb-6">
               <div class="col-12">
                 <label class="form-label" for="tanggal_pemeriksaan">Tanggal Pemeriksaan</label>
-                <input type="date" class="form-control" id="tanggal_pemeriksaan" name="tanggal_pemeriksaan" value="{{ $pendaftaran->tanggal_pemeriksaan }}"/>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="tanggal_pemeriksaan"
+                  name="tanggal_pemeriksaan"
+                  value="{{ $pendaftaran->tanggal_pemeriksaan }}"
+                />
               </div>
+
+              {{-- Kondisi jika login sebagai pasien --}}
               <div class="col-12">
                 <label for="pasien" class="form-label">Nama Pasien</label>
-                <select class="form-select" id="pasien" name="pasien_id">
-                  <option value="">Pilih Nama Pasien</option>
-                  @foreach ($pasien as $pas)
-                  <option value="{{ $pas->id }}" {{ $pas->id == $pendaftaran->pasien_id ? 'selected' : '' }}>
-                    {{ $pas->nama_lengkap }}
-                  </option>
-                  @endforeach
-                </select>
+
+                @if(Auth::user()->role === 'pasien')
+                  {{-- Jika login pasien, tampilkan input readonly --}}
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{ Auth::user()->nama_lengkap }}"
+                    readonly
+                  />
+                  {{-- Hidden input untuk kirim pasien_id --}}
+                  <input type="hidden" name="pasien_id" value="{{ Auth::user()->id }}">
+                @else
+                  {{-- Jika bukan pasien, tampilkan dropdown --}}
+                  <select class="form-select" id="pasien" name="pasien_id">
+                    <option value="">Pilih Nama Pasien</option>
+                    @foreach ($pasien as $pas)
+                      <option value="{{ $pas->id }}" {{ $pas->id == $pendaftaran->pasien_id ? 'selected' : '' }}>
+                        {{ $pas->nama_lengkap }}
+                      </option>
+                    @endforeach
+                  </select>
+                @endif
               </div>
+
               <div class="col-12">
                 <label for="keluhan" class="form-label">Keluhan Pasien</label>
                 <select class="form-select" id="keluhan" name="keluhan_id">
                   <option value="">Pilih Keluhan Pasien</option>
                   @foreach ($keluhan as $kel)
-                  <option value="{{ $kel->id }}" {{ $kel->id == $pendaftaran->keluhan_id ? 'selected' : '' }}>
-                    {{ $kel->nama_keluhan }}
-                  </option>
+                    <option value="{{ $kel->id }}" {{ $kel->id == $pendaftaran->keluhan_id ? 'selected' : '' }}>
+                      {{ $kel->nama_keluhan }}
+                    </option>
                   @endforeach
                 </select>
               </div>
+
               <div class="col-12">
                 <label for="dokter" class="form-label">Dokter Spesialis</label>
                 <select class="form-select" id="dokter" name="dokter_id">
                   <option value="">Pilih Dokter Spesialis</option>
                   @foreach ($dokter as $dok)
-                  <option value="{{ $dok->id }}" {{ $dok->id == $pendaftaran->dokter_id ? 'selected' : '' }}>
-                    {{ $dok->nama_dokter }} - Spesialis {{ $dok->spesialis->nama_spesialis }}
-                  </option>
+                    <option value="{{ $dok->id }}" {{ $dok->id == $pendaftaran->dokter_id ? 'selected' : '' }}>
+                      {{ $dok->nama_dokter }} - Spesialis {{ $dok->spesialis->nama_spesialis }}
+                    </option>
                   @endforeach
                 </select>
               </div>
+
               <div class="col-12">
                 <label class="form-label" for="keterangan">Keterangan</label>
-                <textarea name="keterangan" class="form-control" id="" cols="30" rows="5">{{ $pendaftaran->keterangan }}</textarea>
+                <textarea name="keterangan" class="form-control" cols="30" rows="5">{{ $pendaftaran->keterangan }}</textarea>
               </div>
             </div>
+
             <button type="submit" class="btn btn-primary me-3">Ubah</button>
             <a href="{{ route('pendaftaran-pasien') }}" class="btn btn-outline-secondary">Kembali</a>
           </form>

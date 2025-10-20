@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dokter;
 use App\Models\Keluhan;
 use App\Models\PendaftaranPasien;
+use App\Models\RekamMedis;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -141,5 +142,57 @@ class PendaftaranPasienController extends Controller
         }
 
         return redirect('/pendaftaran-pasien');
+    }
+
+    public function storeRekamMedis(Request $request, $slug)
+    {
+        $pendaftaran = PendaftaranPasien::where('slug', $slug)->first();
+
+        $validatedData = $request->validate([
+            'hasil_pemeriksaan' => 'required',
+            'diagnosis' => 'required',
+            'tindakan_medis' => 'required',
+            'resep_obat' => 'nullable',
+            'catatan_tambahan' => 'nullable',
+            'tekanan_darah' => 'nullable|max:20',
+            'suhu_tubuh' => 'nullable|max:10',
+            'berat_badan' => 'nullable|max:10',
+            'tinggi_badan' => 'nullable|max:10',
+        ]);
+
+        $tanggal = now()->format('Ymd');
+        $uniqueString = $tanggal . now()->format('His') . Str::random(5);
+        $validatedData['kode'] = 'RM' . $uniqueString;
+        $validatedData['pendaftaran_id'] = $pendaftaran->id;
+        $validatedData['created_by'] = auth()->id();
+        $validatedData['slug'] = SlugService::createSlug(RekamMedis::class, 'slug', $validatedData['kode']);
+
+        RekamMedis::create($validatedData);
+
+        alert()->success('Sukses', 'Rekam medis berhasil disimpan');
+        return redirect()->route('pendaftaran-pasien.detail', $slug);
+    }
+
+    public function updateRekamMedis(Request $request, $slug)
+    {
+        $pendaftaran = PendaftaranPasien::where('slug', $slug)->first();
+        $rekamMedis = $pendaftaran->rekamMedis;
+
+        $validatedData = $request->validate([
+            'hasil_pemeriksaan' => 'required',
+            'diagnosis' => 'required',
+            'tindakan_medis' => 'required',
+            'resep_obat' => 'nullable',
+            'catatan_tambahan' => 'nullable',
+            'tekanan_darah' => 'nullable|max:20',
+            'suhu_tubuh' => 'nullable|max:10',
+            'berat_badan' => 'nullable|max:10',
+            'tinggi_badan' => 'nullable|max:10',
+        ]);
+
+        $rekamMedis->update($validatedData);
+
+        alert()->success('Sukses', 'Rekam medis berhasil diperbarui');
+        return redirect()->route('pendaftaran-pasien.detail', $slug);
     }
 }

@@ -33,7 +33,7 @@ Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda')->mi
 // autentikasi
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
@@ -72,6 +72,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/jadwal-dokter/{slug}/edit', [DokterController::class, 'jadwalEdit'])->name('jadwal-dokter.edit');
     Route::put('/jadwal-dokter/{slug}', [DokterController::class, 'jadwalUpdate'])->name('jadwal-dokter.update');
     Route::delete('/jadwal-dokter/{slug}', [DokterController::class, 'jadwalDestroy'])->name('jadwal-dokter.destroy');
+    // rekam medis
+    Route::post('/pendaftaran-pasien/{slug}/rekam-medis', [PendaftaranPasienController::class, 'storeRekamMedis'])->name('rekam-medis.store');
+    Route::put('/pendaftaran-pasien/{slug}/rekam-medis', [PendaftaranPasienController::class, 'updateRekamMedis'])->name('rekam-medis.update');
 });
 
 Route::middleware(['auth', 'role:admin,pasien'])->group(function () {
